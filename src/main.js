@@ -11,9 +11,11 @@ import 'vant/lib/index.css'
 // 导入amfe-flexible库
 import 'amfe-flexible'
 
-// 全局注册组件
+// 全局注册通用组件
 import YzHeader from './components/YzHeader.vue'
+import YzLogo from './components/YzLogo.vue'
 Vue.component('yz-header', YzHeader)
+Vue.component('yz-logo', YzLogo)
 
 // 全局的把vant所有的组件都导入了
 Vue.use(Vant)
