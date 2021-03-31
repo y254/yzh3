@@ -1,5 +1,7 @@
 <template>
-  <div>注册组件</div>
+  <div>
+    <yz-header>注册</yz-header>
+  </div>
 </template>
 
 <script>

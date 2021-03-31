@@ -3,9 +3,6 @@ import VueRouter from 'vue-router'
 // 导入组件
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
-// 导入通用的样式
-import '../styles/base.less'
-import '../styles/iconfont.css'
 
 Vue.use(VueRouter)
 
