@@ -27,12 +27,15 @@
           >提交</van-button
         >
       </div>
+      <div class="tips">
+        没有账号?去<router-link to="/register">注册</router-link>
+      </div>
     </van-form>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
 export default {
   data () {
     return {
@@ -64,7 +67,7 @@ export default {
       //   }
       // })
       // 第二种写法
-      const res = await axios.post('http://localhost:3000/login', {
+      const res = await this.$axios.post('/login', {
         username: this.username,
         password: this.password
       })
@@ -83,4 +86,12 @@ export default {
 }
 </script>
 <style lang="less">
+.tips {
+  font-size: 16px;
+  text-align: right;
+  padding-right: 20px;
+  a {
+    color: red;
+  }
+}
 </style>
