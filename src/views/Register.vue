@@ -74,8 +74,13 @@ export default {
       // console.log(res)
       const { statusCode, message } = res.data
       if (statusCode === 200) {
-        // 注册成功就跳转到登录页
-        this.$router.push('/login')
+        // 注册成功就跳转到登录页,并将用户名和密码传到登录页
+        this.$router.push({
+          path: '/login',
+          // 通过query传参会在地址栏显示
+          // query: this.user
+          params: this.user
+        })
         // 在组件中必须 用this.$toast才能使用
         this.$toast.success(message)
       } else {
@@ -86,5 +91,13 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less" scoped>
+.tips {
+  font-size: 16px;
+  text-align: right;
+  padding-right: 20px;
+  a {
+    color: rgb(0, 4, 255);
+  }
+}
 </style>

@@ -4,7 +4,6 @@
     <yz-header>登录</yz-header>
     <!-- 登录和注册字体组件 -->
     <yz-logo></yz-logo>
-
     <!-- 登录表单 -->
     <van-form @submit="login">
       <van-field
@@ -37,6 +36,15 @@
 <script>
 // import axios from 'axios'
 export default {
+  // 数据加载好的钩子函数
+  created () {
+    // console.log(this.$route)
+    // 拿到注册页面注册了的用户名和密码,这里只能通过路由传参拿到,不能通过组件方式,因为一注册页面一跳转就销毁了
+    const { username, password } = this.$route.params
+    this.username = username
+    this.password = password
+  },
+
   data () {
     return {
       username: '', // 用来存登录输入用户名
@@ -75,7 +83,9 @@ export default {
       const { statusCode, message } = res.data
       if (statusCode === 200) {
         // 登录成功后救要保存token并跳转到个人中心
-        this.$router.push('/user')
+        this.$router.push({
+          path: '/user'
+        })
         // 在组件中必须 用this.$toast才能使用
         this.$toast.success(message)
       } else {
@@ -85,7 +95,7 @@ export default {
   }
 }
 </script>
-<style lang="less">
+<style lang="less" scoped>
 .tips {
   font-size: 16px;
   text-align: right;
