@@ -23,7 +23,7 @@
       />
       <div style="margin: 16px">
         <van-button round block type="info" native-type="submit"
-          >提交</van-button
+          >登录</van-button
         >
       </div>
       <div class="tips">
@@ -80,14 +80,17 @@ export default {
         password: this.password
       })
       // console.log(res)
-      const { statusCode, message } = res.data
+      const { statusCode, message, data } = res.data
       if (statusCode === 200) {
+        // 在组件中必须 用this.$toast才能使用
+        this.$toast.success(message)
+        // 保存token
+        localStorage.setItem('token', data.token)
+        localStorage.setItem('userId', data.user.id)
         // 登录成功后救要保存token并跳转到个人中心
         this.$router.push({
           path: '/user'
         })
-        // 在组件中必须 用this.$toast才能使用
-        this.$toast.success(message)
       } else {
         this.$toast.fail(message)
       }

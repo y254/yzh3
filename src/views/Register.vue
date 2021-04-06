@@ -76,7 +76,7 @@ export default {
       if (statusCode === 200) {
         // 注册成功就跳转到登录页,并将用户名和密码传到登录页
         this.$router.push({
-          path: '/login',
+          name: 'login',
           // 通过query传参会在地址栏显示
           // query: this.user
           params: this.user
