@@ -1,7 +1,7 @@
 <template>
   <div class="user">
     <!-- 头部 -->
-    <div class="header">
+    <div class="header" @click="$router.push('/edit')">
       <!-- 个人中心头像区 -->
       <div class="avatar">
         <img :src="base + user.head_img" alt="" />

@@ -16,6 +16,8 @@ export default {
       if (this.to) {
         this.$router.push(this.to)
       }
+      // 触发click事件
+      this.$emit('click')
     }
   },
   // 以前写法是: props:['to'] ,这样不严格
