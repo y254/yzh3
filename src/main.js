@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router/index'
 // 导入通用的样式
-import './styles/base.css'
+import './styles/base.less'
 import './styles/iconfont.css'
 
 // 导入全局通用组件

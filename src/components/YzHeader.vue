@@ -1,5 +1,7 @@
 <template>
-  <!-- 这是通用的头部 -->
+  <div>
+    <div class="general"></div>
+    <!-- 这是通用的头部 -->
   <div class="yz-header">
     <!-- 左箭头盒子 -->
     <div class="back" @click="back">
@@ -8,6 +10,7 @@
     <!-- 头部的提示内容 -->
     <div class="title"><slot></slot></div>
     <div class="extra"></div>
+  </div>
   </div>
 </template>
 
@@ -22,8 +25,19 @@ export default {
 </script>
 
 <style lang="less">
+.general {
+ width: 100%;
+ height: 50px;
+
+}
+
 .yz-header {
+  position: fixed;
+  width: 100%;
   height: 50px;
+  top: 0;
+  z-index: 99;
+  background-color: #fff;
   border-bottom: 1px solid #ccc;
   display: flex;
   text-align: center;
@@ -40,5 +54,6 @@ export default {
     font-size: 18px;
     font-weight: 700;
   }
+
 }
 </style>
