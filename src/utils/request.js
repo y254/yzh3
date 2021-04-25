@@ -8,8 +8,9 @@ import { Toast } from 'vant'
 // 将axios挂载到vue原型对象上,这样其他组件就可以通过this.$axios来拿到这个方法了
 Vue.prototype.$axios = axios
 //  给axios配置默认的baseURL,基准地址
-axios.defaults.baseURL = 'http://localhost:3000'
-Vue.prototype.$base = 'http://localhost:3000'
+const URL = 'http://localhost:3000'
+axios.defaults.baseURL = URL
+Vue.prototype.$base = URL
 
 // 在请求拦截器中可以通过config.headers访问到所有的请求头
 // 给axios配置拦截器,请求会先经过请求拦截器,才到服务器 这样不用一个一个组件的去吧token设置到请求头中
@@ -34,3 +35,11 @@ axios.interceptors.response.use(function (response) {
   }
   return response
 })
+Vue.prototype.$url = function (url) {
+  if (url.startsWith('http')) {
+    // 网络图片
+    return url
+  } else {
+    return URL + url
+  }
+}
