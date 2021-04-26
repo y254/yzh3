@@ -66,6 +66,14 @@ export default {
   methods: {
     // 获取栏目列表页
     async getTabList () {
+      // 先判断缓存中是否存在
+      const activeList = JSON.parse(localStorage.getItem('activeList'))
+      if (activeList) {
+        this.tabList = activeList
+        // 发送请求获取第一个tab栏的数据
+        this.getNewsList(this.tabList[0].id)
+        return
+      }
       const res = await this.$axios.get('/category')
       // console.log(res)
       const { statusCode, data } = res.data
