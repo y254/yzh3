@@ -88,9 +88,15 @@ export default {
         localStorage.setItem('token', data.token)
         localStorage.setItem('userId', data.user.id)
         // 登录成功后救要保存token并跳转到个人中心
-        this.$router.push({
-          path: '/user'
-        })
+        // this.$router.push({
+        //   path: '/user'
+        // })
+        // 如果有back=true就可以后退,
+        if (this.$route.query.back) {
+          this.$router.back()
+        } else {
+          this.$router.push('/user')
+        }
       } else {
         this.$toast.fail(message)
       }

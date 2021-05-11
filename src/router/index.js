@@ -10,6 +10,9 @@ import MyFollow from '../views/user/MyFollow.vue'
 import MyComment from '../views/user/MyComment.vue'
 import MyStar from '../views/user/MyStar.vue'
 import Index from '../views/news/Index.vue'
+import Manage from '../views/news/Manage.vue'
+import PostDetail from '../views/news/PostDetail.vue'
+import Search from '../views/news/Search.vue'
 Vue.use(VueRouter)
 
 // 这个时解决登录页想要跳转到个人中心页,但没token是跳不了的,又跳回登录页,就会报错,E
@@ -27,7 +30,10 @@ const routes = [
   { path: '/myfollow', component: MyFollow, name: 'myfollow' },
   { path: '/mycomment', component: MyComment },
   { path: '/mystar', component: MyStar, name: 'mystar' },
-  { path: '/', component: Index, name: 'index' }
+  { path: '/', component: Index, name: 'index' },
+  { path: '/manage', component: Manage, name: 'manage' },
+  { path: '/post-detail/:id', component: PostDetail, name: 'post-detail' },
+  { path: '/search', component: Search, name: 'search' }
 ]
 
 const router = new VueRouter({

@@ -21,7 +21,7 @@
       </div>
     </div>
     <!-- 导航条 -->
-    <!-- to不过是这个user组件的一个自定的方法,去其他名字也可以, 这里不需要:to 动态拿到数据,因为export default 里没定义数据,export default就好比new Vue 里的data的数据,这样在子组件就通过prop拿到to属性,就可以跳转到其他组件了 -->
+    <!-- to不过是这个user组件的一个自定的方 法,去其他名字也可以, 这里不需要:to 动态拿到数据,因为export default 里没定义数据,export default就好比new Vue 里的data的数据,这样在子组件就通过prop拿到to属性,就可以跳转到其他组件了 -->
     <yz-navitem to="/myfollow">
       我的关注
       <template #content>关注的内容</template>
@@ -30,7 +30,7 @@
       我的跟帖
       <template #content>跟帖/回复</template>
     </yz-navitem>
-    <yz-navitem>
+    <yz-navitem to="/mystar">
       我的收藏
       <template #content>文章/视频</template>
     </yz-navitem>

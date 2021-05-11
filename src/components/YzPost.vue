@@ -1,5 +1,5 @@
 <template>
-  <div class="yz-post">
+  <div class="yz-post" @click="$router.push(`/post-detail/${post.id}`)">
 <!-- 视频文章 -->
     <div class="video-post" v-if="post.type === 2">
       <div class="title">{{post.title}}</div>
@@ -28,7 +28,7 @@
      </div>
 
      <!-- 多张图片的文章 -->
-      <div class="multiple-img-post" v-else-if="post.length >= 3">
+      <div class="multiple-img-post" v-else-if="post.cover.length >= 3">
          <div class="title">{{post.title}}</div>
          <div class="imgs">
             <img :src="$url(post.cover[0].url)" alt="">

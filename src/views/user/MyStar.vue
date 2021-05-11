@@ -1,7 +1,7 @@
 <template>
   <div class="mystar">
     <yz-header>我的收藏</yz-header>
-    <div class="list">
+    <!-- <div class="list">
       <div class="item" v-for="item in list" :key="item.id">
         <div class="info">
           <div class="title">{{item.title}}</div>
@@ -14,6 +14,9 @@
             <img :src="$url(item.cover[0].url)" alt="">
         </div>
       </div>
+    </div> -->
+    <div class="list">
+      <yz-post v-for="item in list" :key="item.id" :post="item"></yz-post>
     </div>
   </div>
 </template>
@@ -35,6 +38,10 @@ export default {
       const { statusCode, data } = res.data
       if (statusCode === 200) {
         this.list = data
+        // 这一步是后端的数据有问题,主页是用comment_length表示跟帖的数量,而收藏的请求数据是comment_length表示跟帖数量 ,所以遍历收藏的数据,拿到跟帖的数量将他放到comment_length再,再放到list里
+        this.list.forEach(item => {
+          item.comment_length = item.comments.length
+        })
         console.log(this.list)
       }
     }
@@ -43,28 +50,5 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.item {
-border-bottom: 1px solid #000;
-padding: 10px;
-display: flex;
-.info {
-    flex: 1;
-    font-size: 16px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    .user {
-        color: #666;
-        font-size: 14px;
-    }
-}
-.img {
-    img {
-        width: 120px;
-        height: 74px;
-        object-fit: cover;
-    }
-}
-}
 
 </style>

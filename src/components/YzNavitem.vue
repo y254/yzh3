@@ -39,6 +39,7 @@ export default {
   .content {
     flex: 1;
     text-align: right;
+    flex-direction: row-reverse;
   }
   .arrow {
     padding: 0 10px;
