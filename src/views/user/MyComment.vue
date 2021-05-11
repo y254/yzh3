@@ -18,7 +18,7 @@
               </div>
               <div class="content">{{item.content}}</div>
               <div class="origin">
-                  <span class="one-txt-cut">原文:{{item.post.title}}</span>
+                  <span class="one-txt-cut" @click="$router.push(`/post-detail/${item.post.id}/`)">原文:{{item.post.title}}</span>
                   <span class="iconfont iconjiantou1"></span>
               </div>
           </div>
@@ -106,14 +106,14 @@ export default {
   .item {
     border-bottom: 1px solid #ccc;
     padding: 0 20px;
-     font-size: 18px;
-      color: rgb(136, 136, 136);
+    font-size: 18px;
+    color: rgb(136, 136, 136);
   .time {
       padding: 20px 0;
     }
     .comment{
         padding: 20px;
-        background-color: rgb(230, 230, 230);
+        background-color: #ddd;
         .name {
             font-size: 14px;
              padding-bottom: 15px;

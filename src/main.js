@@ -17,6 +17,9 @@ import './utils/vant'
 import 'amfe-flexible'
 
 Vue.config.productionTip = false
+// 创建一个bus
+const bus = new Vue()
+Vue.prototype.$bus = bus
 
 new Vue({
   router,

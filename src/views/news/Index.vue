@@ -5,7 +5,7 @@
         <span class="iconfont iconnew"></span>
       </div>
       <div class="search">
-        <div class="search-box">
+        <div class="search-box" @click="$router.push('/search')">
           <span class="iconfont iconsearch"></span>
           <span>搜索新闻</span>
         </div>
@@ -31,6 +31,7 @@
         finished-text="没有更多了"
         @load="onLoad"
         :immediate-check="false"
+
         >
         <yz-post :post="item" v-for="item in newsList" :key="item.id"></yz-post>
      </van-list>
@@ -45,6 +46,8 @@
 <script>
 
 export default {
+  // 组件的名字 递归的时候通过name可以渲染自己 缓存的时候通过name可以进行缓存
+  name: 'index',
   data () {
     return {
       // 点击栏目的序号
@@ -96,13 +99,16 @@ export default {
       const { statusCode, data } = res.data
 
       if (statusCode === 200) {
+        if (this.pageIndex === 1) {
+          this.newsList = []
+        }
         this.newsList = [...this.newsList, ...data]
         console.log(this.newsList)
         // 数据加载完成,需要把loading改成false
         this.loading = false
         this.refreshing = false
 
-        // 判断是否还有跟多数据
+        // 判断是否还有跟多数 据
         if (data.length < this.pageSize) {
           this.finished = true
         }
